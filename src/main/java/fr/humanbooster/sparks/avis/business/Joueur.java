@@ -25,5 +25,13 @@ public class Joueur extends Utilisateur {
 
 	@OneToMany(mappedBy = "joueur")
 	private List<Avis> avis;
+	
+	public Joueur(String pseudo, String motDePasse, String email, LocalDate dateDeNaissance) {
+		super();
+		this.pseudo = pseudo;
+		this.motDePasse = motDePasse;
+		this.email = email;
+		this.dateDeNaissance = dateDeNaissance;		
+	}
 
 }

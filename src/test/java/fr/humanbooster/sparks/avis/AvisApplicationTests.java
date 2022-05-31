@@ -1,4 +1,4 @@
-package fr.humanboster.sparks.avis;
+package fr.humanbooster.sparks.avis;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

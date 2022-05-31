@@ -1,8 +1,10 @@
 package fr.humanbooster.sparks.avis.business;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,6 +32,7 @@ public class Jeu {
 	private Long id;
 
 	@NotBlank(message = "Le jeu doit avoir un nom")
+	@Column(unique = true, length = 32)
 	private String nom;
 
 	@Size(min = 8, max = 255, message = "Un avis doit contenir au minimum 8 caractères")
@@ -49,7 +52,9 @@ public class Jeu {
 	@ManyToOne
 	private Editeur editeur;
 
-	@ManyToMany(mappedBy = "jeu")
+	@ManyToMany
+    //@ManyToMany(cascade = CascadeType.ALL)
+    //@JoinTable(name = "jeu_plateforme", joinColumns = @JoinColumn(name = "plateforme_id"), inverseJoinColumns = @JoinColumn(name = "jeu_id"))
 	private List<Plateforme> plateformes;
 
 	@ManyToOne
@@ -60,5 +65,11 @@ public class Jeu {
 
 	@OneToMany(mappedBy = "jeu")
 	private List<Avis> avis;
+	
+	public Jeu(String nom, String image) {
+		this.nom = nom;
+		this.image = image;
+	}
+
 
 }

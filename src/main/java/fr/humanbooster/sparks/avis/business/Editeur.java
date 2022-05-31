@@ -30,5 +30,9 @@ public class Editeur {
 
 	@OneToMany(mappedBy = "editeur")
 	private List<Jeu> jeux;
+	
+	public Editeur(String nom) {
+		this.nom = nom;
+	}
 
 }

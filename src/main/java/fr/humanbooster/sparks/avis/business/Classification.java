@@ -30,5 +30,9 @@ public class Classification {
 
 	@OneToMany(mappedBy="classification")
 	private List<Jeu> jeux;
+	
+	public Classification(String nom) {
+		this.nom = nom;
+	}
 
 }

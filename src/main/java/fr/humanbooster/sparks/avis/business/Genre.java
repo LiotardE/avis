@@ -21,6 +21,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class Genre {
 
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -31,4 +32,7 @@ public class Genre {
 	@OneToMany(mappedBy = "genre")
 	private List<Jeu> jeux;
 
+	public Genre(String nom) {
+		this.nom = nom;
+	}
 }

@@ -28,7 +28,11 @@ public class Plateforme {
 	@NotBlank(message = "La plateforme doit avoir un nom")
 	private String nom;
 
-	@ManyToMany
+	@ManyToMany(mappedBy = "plateformes")
 	private List<Jeu> jeux;
+	
+	public Plateforme(String nom) {
+		this.nom = nom;
+	}
 
 }
