@@ -109,15 +109,15 @@ public class InitController implements CommandLineRunner {
 
 	private void ajouterModerateurs() {
 		if (moderateurDao.count() == 0) {
-			moderateurDao.save(new Moderateur("Janno", "123", "janno@hb.com", "0475079874"));
-			moderateurDao.save(new Moderateur("Fifi", "123", "fifi@hb.com", "0475741200"));
+			moderateurDao.save(new Moderateur("janno", "123", "janno@hb.com", "0475079874"));
+			moderateurDao.save(new Moderateur("fifi", "123", "fifi@hb.com", "0475741200"));
 		}
 	}
 
 	private void ajouterJoueurs() {
 		if (joueurDao.count() == 0) {
-			joueurDao.save(new Joueur("Nefer", "123", "nefer@hb.com", LocalDate.of(1974, 8, 29)));
-			joueurDao.save(new Joueur("Ramses", "123", "ramses@hb.com", LocalDate.of(2005, 6, 17)));
+			joueurDao.save(new Joueur("nefer", "123", "nefer@hb.com", LocalDate.of(1974, 8, 29)));
+			joueurDao.save(new Joueur("ramses", "123", "ramses@hb.com", LocalDate.of(2005, 6, 17)));
 		}
 	}
 

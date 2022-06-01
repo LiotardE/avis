@@ -6,4 +6,6 @@ import fr.humanbooster.sparks.avis.business.Joueur;
 
 public interface JoueurDao extends JpaRepository<Joueur, Long> {
 
+	Joueur findByPseudo(String pseudo);
+
 }
