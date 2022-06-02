@@ -5,8 +5,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -65,13 +63,5 @@ public class IndexController {
 			
 	}
 
-//	/**
-//	 * Principe Hollywood : ne nous appelez pas, nous vous appelerons
-//	 * Spring va instancier l'objet métier joueur
-//	 * 
-//	 * @param joueur
-//	 * @return
-//	 */
-//	@GetMapping
-//	public ModelAndView inscriptionGet()
+
 }

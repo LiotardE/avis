@@ -22,7 +22,7 @@
 		</select> 
 		<input type="text" name="DESCRIPTION" placeHolder="DESCRIPTION">
 			
-		<select name="NOTE" id="note-select" class="custom-select" size="3">
+		<select name="NOTE" id="note-select" class="custom-select" size="10">
 			<option selected>--Veuillez choisir une note--</option>
 				<c:forEach var="i" begin="0" end="20">			
 					<option value="${i}">${i}</option>		

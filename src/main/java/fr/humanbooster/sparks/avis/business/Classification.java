@@ -3,6 +3,7 @@ package fr.humanbooster.sparks.avis.business;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class Classification {
 	@NotBlank(message = "La classification doit avoir un nom")
 	private String nom;
 
-	@OneToMany(mappedBy="classification")
+	@OneToMany(mappedBy="classification", fetch = FetchType.EAGER)
 	private List<Jeu> jeux;
 	
 	public Classification(String nom) {

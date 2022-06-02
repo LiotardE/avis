@@ -10,6 +10,10 @@ public interface JeuService {
 
 	Jeu recupererJeu(Long idJeu);
 
+	Jeu ajouterJeu(Jeu jeu);
+
+	
+
 
 
 }

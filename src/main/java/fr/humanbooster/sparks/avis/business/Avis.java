@@ -39,12 +39,14 @@ public class Avis {
 	
 	private LocalDateTime dateModeration;
 
+	@ToString.Exclude  // ne s'occupe pas de la donnée en-dessous
 	@ManyToOne
 	private Joueur joueur;
 
 	@ManyToOne
 	private Moderateur moderateur;
 
+	@ToString.Exclude 
 	@ManyToOne
 	private Jeu jeu;
 

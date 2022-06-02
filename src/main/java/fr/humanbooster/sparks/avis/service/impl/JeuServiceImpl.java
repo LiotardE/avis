@@ -26,4 +26,11 @@ public class JeuServiceImpl implements JeuService {
 		return jeuDao.findById(idJeu).orElse(null);
 	}
 
+	@Override
+	public Jeu ajouterJeu(Jeu jeu) {
+		return jeuDao.save(jeu);
+	}
+
+	
+	
 }

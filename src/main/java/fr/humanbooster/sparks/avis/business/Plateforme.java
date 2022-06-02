@@ -3,6 +3,7 @@ package fr.humanbooster.sparks.avis.business;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class Plateforme {
 	@NotBlank(message = "La plateforme doit avoir un nom")
 	private String nom;
 
-	@ManyToMany(mappedBy = "plateformes")
+	@ManyToMany(mappedBy = "plateformes", fetch = FetchType.EAGER)
 	private List<Jeu> jeux;
 	
 	public Plateforme(String nom) {
