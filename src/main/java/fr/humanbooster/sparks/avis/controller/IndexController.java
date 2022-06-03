@@ -37,31 +37,7 @@ public class IndexController {
 		return mav;
 	}
 	
-	@PostMapping("/connexion")
-	public ModelAndView connexionPost(@RequestParam("PSEUDO") String pseudo, 
-								@RequestParam("MOT_DE_PASSE") String motDePasse) {
-		Joueur joueur = joueurService.recupererJoueur(pseudo, motDePasse);
-		
-		if (joueur == null || !joueur.getMotDePasse().equals(motDePasse)) {			
-			ModelAndView mav =new ModelAndView("redirect:index");
-			mav.addObject("notification", "Mot de passe et/ou email incorrect");
-			return mav;
-		}
-		else {
-			// L'utilisateur a fourni les bonnes informations (pseudo et mot de passe)
-			
-			// On ajoute en session HTTP l'objet joueur
-			httpSession.setAttribute("joueur", joueur);
-			
-			// On redirige vers l'URL avis
-			// équivalent de ce que l'on faisait à l'époque de JEE en écrivant :
-			// response.sendRedirect("avis");
-			// Après le mot redirect, on fait référence à une URL et non pas à une vue
-			ModelAndView mav = new ModelAndView("redirect:/avis");
-			return mav;
-		}
-			
-	}
+	
 
 
 }

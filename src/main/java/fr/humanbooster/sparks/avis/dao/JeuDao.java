@@ -6,4 +6,6 @@ import fr.humanbooster.sparks.avis.business.Jeu;
 
 public interface JeuDao extends JpaRepository<Jeu, Long> {
 
+	
+
 }

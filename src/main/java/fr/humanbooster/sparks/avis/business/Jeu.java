@@ -1,6 +1,7 @@
 package fr.humanbooster.sparks.avis.business;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -26,7 +27,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
 public class Jeu {
 
 	@Id
@@ -45,39 +45,50 @@ public class Jeu {
 	@NotBlank(message = "Le jeu doit avoir au moins une capture")
 	private String image;
 
-	@ToStringExclude
+	@ToString.Exclude
 	@ManyToOne
 	private Classification classification;
 
-	@ToStringExclude
+	@ToString.Exclude
 	@ManyToOne
 	private Genre genre;
 
-	@ToStringExclude
+	@ToString.Exclude
 	@ManyToOne
 	private Editeur editeur;
 
-	@ToStringExclude
+	@ToString.Exclude
 	@ManyToMany
-    //@ManyToMany(cascade = CascadeType.ALL)
-    //@JoinTable(name = "jeu_plateforme", joinColumns = @JoinColumn(name = "plateforme_id"), inverseJoinColumns = @JoinColumn(name = "jeu_id"))
+	// @ManyToMany(cascade = CascadeType.ALL)
+	// @JoinTable(name = "jeu_plateforme", joinColumns = @JoinColumn(name =
+	// "plateforme_id"), inverseJoinColumns = @JoinColumn(name = "jeu_id"))
 	private List<Plateforme> plateformes;
 
-	@ToStringExclude
+	@ToString.Exclude
 	@ManyToOne
 	private ModeleEconomique modeleEconomique;
-	
+
+	@ToString.Exclude
 	@ManyToOne
 	private Moderateur moderateur;
 
-	@ToStringExclude
+	@ToString.Exclude
 	@OneToMany(mappedBy = "jeu", fetch = FetchType.EAGER)
 	private List<Avis> avis;
-	
-	public Jeu(String nom, String image) {
-		this.nom = nom;
-		this.image = image;
+
+	public Jeu() {
+		plateformes = new ArrayList<>();
 	}
 
+
+	public Jeu get(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+//	public Jeu(String nom, String image) {
+//		this.nom = nom;
+//		this.image = image;
+//	}
 
 }

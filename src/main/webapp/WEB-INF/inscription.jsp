@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="/css/inscription.css" type="text/css">
 <title>Inscription</title>
 </head>
 <body>

@@ -14,8 +14,8 @@
 <title>avis</title>
 </head>
 <body>
-	<c:if test="${sessionScope.joueur ne null}">
-		<h2>Bonjour ${sessionScope.joueur.pseudo} !</h2>
+	<c:if test="${sessionScope.utilisateur ne null}">
+		<h2>Bonjour ${sessionScope.utilisateur.pseudo} !</h2>
 	</c:if>
 	<h1>Liste des avis</h1>
 	<table class="table table-striped">
@@ -57,6 +57,7 @@
 		avis</a></p>
 	<p><a href="/jeux" title="jeux">Liste des jeux</a></p>			
 	<p><a href="/deconnexion" title="déconnexion">Déconnexion</a></p>
-	
+	<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>
