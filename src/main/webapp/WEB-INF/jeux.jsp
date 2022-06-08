@@ -18,20 +18,30 @@
 		<h2>Bonjour ${sessionScope.utilisateur.pseudo} !</h2>
 	</c:if>
 	<h1>Liste des jeux</h1>
+	<p><a href="jeux?numeroDePage=0">Début</a></p>
+<c:if test="${jeux.hasPrevious()}">
+	<a href="jeux?numeroDePage=${jeux.number-1}">	&#x1F3AE;Jeux précédents &#x23EE;&#xFE0F;</a>
+</c:if>
+<h4>Page ${jeux.number+1}</h4>
+<c:if test="${jeux.hasNext()}">
+	<a href="jeux?numeroDePage=${jeux.number+1}"> 	&#x1F579;&#xFE0F; Jeux suivants &#x23ED;&#xFE0F;</a>
+</c:if>
+<p><a href="jeux?numeroDePage=${jeux.getTotalPages()-1}">Fin</a></p>
+	
 	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th scope="col">#</th>
 				<th scope="col">Image<a href="" title=""></a></th>
-				<th scope="col">Nom<a href="" title=""><img
+				<th scope="col">Nom<a href="/jeux?sort=nom,desc" title=""><img
 						class="icon icon-s" src="/img/sort-yellow.png" alt="Trier"></a></th>
-				<th scope="col">Editeur<a href="" title=""><img
+				<th scope="col">Editeur<a href="/jeux?sort=editeur.nom,desc" title=""><img
 						class="icon icon-s" src="/img/sort-yellow.png" alt="Trier"></a></th>
 				<th scope="col">Opérations<a href="" title=""></a></th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${jeux}" var="jeu" varStatus="boucle">
+			<c:forEach items="${jeux.content}" var="jeu" varStatus="boucle">
 				<tr>
 					<th scope="row">${boucle.count}</th>
 					<td>${jeu.image}</td>
@@ -50,7 +60,6 @@
 			</c:forEach>
 		</tbody>
 	</table>
-
 
 	<c:if test="${sessionScope.utilisateur.getClass().getSimpleName() eq 'Moderateur'}">
 		<p>

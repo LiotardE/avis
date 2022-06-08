@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import fr.humanbooster.sparks.avis.business.Jeu;
@@ -41,6 +43,11 @@ public class JeuServiceImpl implements JeuService {
 	@Override
 	public void modifierJeu(@Valid Jeu jeu) {
 		jeuDao.save(jeu);		
+	}
+
+	@Override
+	public Page<Jeu> recupererJeux(Pageable withPage) {		
+		return jeuDao.findAll(withPage);
 	}
 
 	

@@ -3,6 +3,8 @@ package fr.humanbooster.sparks.avis.controller;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -33,7 +35,9 @@ public class JeuController {
 
 	// Attributs (toujours au début de la classe)
 	// (quelles sont les dépendances ?)
-	//private final HttpSession httpSession;
+	private final HttpSession httpSession;
+	
+	private static final int NB_JEUX_PAR_PAGE = 5;
 
 	private final JeuService jeuService;
 	private final EditeurService editeurService;
@@ -49,14 +53,21 @@ public class JeuController {
 	// Autrement dit : quelle(s) sont la ou les URLs que la méthode prend en charge
 	// Equivalent de @WebServlet
 	@GetMapping(value = "/jeux")
-	public ModelAndView jeuGet() {
+	public ModelAndView jeuGet(@PageableDefault(size = NB_JEUX_PAR_PAGE, sort = "nom") Pageable pageable,
+				@RequestParam(name="numeroDePage", defaultValue = "0") int numeroDePage, 
+				@RequestParam(name="sort", defaultValue = "nom") String sort) {
 		// On déclare et on instancie un objet de type ModelAndView
 		ModelAndView mav = new ModelAndView();
 		// On définit le nom de la vue (== crème dessert)
 		// Equivalent de request.getRequestDispatcher("WEB-INF/index.jsp")
 		mav.setViewName("jeux");
 		// Récupérer les avis dans la base de données
-		mav.addObject("jeux", jeuService.recupererJeux());
+		mav.addObject("jeux", jeuService.recupererJeux(pageable.withPage(numeroDePage)));
+		mav.addObject("sort", sort);
+		// Met en session la page choisie
+				if (pageable != null) {
+					httpSession.setAttribute("numeroDePage", numeroDePage);
+				}
 		// Renvoyer la vue
 		return mav;
 	}
@@ -156,4 +167,17 @@ public class JeuController {
 		// service.deleteJeu(id);
 		return new ModelAndView("redirect:/jeux");
 	}
+	
+//	// En ajoutant une annotation @GetMapping, on précise une URL
+//		// que la méthode du contrôleur prend en charge
+//		@GetMapping("/calendrier")
+//		public ModelAndView calendrier(@PageableDefault(size = NB_JOURS_PAR_PAGE, sort = "date") Pageable pageable) {
+//			ModelAndView mav = new ModelAndView("calendrier");
+//			mav.addObject("pageDeJours", jourService.recupererJours(pageable));
+//			// Met en session la page choisie
+//			if (pageable != null) {
+//				httpSession.setAttribute("numeroDePage", pageable.getPageNumber());
+//			}
+//			return mav;
+//		}
 }

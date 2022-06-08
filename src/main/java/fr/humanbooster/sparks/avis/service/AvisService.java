@@ -2,6 +2,9 @@ package fr.humanbooster.sparks.avis.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import fr.humanbooster.sparks.avis.business.Avis;
 import fr.humanbooster.sparks.avis.business.Joueur;
 
@@ -14,6 +17,10 @@ public interface AvisService {
 	//Avis ajouterAvis(Long idJeu, String description, Float note);
 
 	Avis ajouterAvis(Long idJeu, String description, Float note, Joueur joueur);
+
+	Page<Avis> recupererAvis(Pageable withPage);
+
+	Avis recupererAvis(Long idAvis);
 
 	
 
